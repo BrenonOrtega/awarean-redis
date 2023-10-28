@@ -1,16 +1,17 @@
 
 using System.Text.Json;
+using Awarean.Redis.Domain.UnitTests;
 using FluentAssertions;
 using static Awarean.Redis.Domain.Constants;
 
-namespace Awarean.Redis.Domain.UnitTests;
+namespace Awarean.Redis.Domain.Resp2.UnitTests;
 
 public class WhenDesserializingSimpleStrings
 {
     [Theory][MemberData(nameof(RespStringGenerator))]
     public void ValidStringShouldDesserialize(string respString)
     {
-        var actualData = RespDesserializer.Desserialize(respString);
+        var actualData = respString.Desserialize();
 
         actualData.Should().NotStartWith(ErrorSign);
     }

@@ -12,5 +12,5 @@ public static class TestExtensions
         => ToWellFormedRespCommand(@string, SimpleStringCommand);
 
     public static string ToWellFormedRespCommand(this string @string, char commandSign) 
-        => $"{commandSign}{@string} {LineBreak}";
+        => $"{commandSign}{@string}{LineBreak}";
 }

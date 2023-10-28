@@ -1,19 +1,42 @@
 
 using System.Text.Json;
+using System.Text.RegularExpressions;
+using Awarean.Redis.Domain.UnitTests;
 using FluentAssertions;
 using static Awarean.Redis.Domain.Constants;
 
-namespace Awarean.Redis.Domain.UnitTests;
+namespace Awarean.Redis.Domain.Resp2.UnitTests;
 
-public class WhenDesserializingIntegers
+public partial class WhenDesserializingIntegers
 {
+    [GeneratedRegex(@"^-?\d+$")]
+    private static partial Regex OnlyIntegersRegex();
+
     [Theory]
     [MemberData(nameof(IntegerGenerator))]
     public void ValidIntegerShouldDesserialize(string respString)
     {
-        var actualData = RespDesserializer.Desserialize(respString);
+        var actualData = respString.Desserialize();
+        var onlyIntegers = OnlyIntegersRegex();
 
-        actualData.Should().NotStartWith(ErrorSign);
+        actualData.Should().MatchRegex(onlyIntegers);
+    }
+
+    [Theory]
+    [MemberData(nameof(IntegerGenerator))]
+    public void ValidIntegersShouldEndWithNumericDigits(string respString)
+    {
+        var actualData = respString.Desserialize();
+        actualData.Should().Match(x => char.IsDigit(x.Last()));
+    }
+
+    [Theory]
+    [MemberData(nameof(InvalidIntegerGenerator))]
+    public void InvalidIntegerShouldFail(string respString)
+    {
+        var actualData = respString.Desserialize();
+
+        actualData.Should().StartWith(ErrorSign);
     }
 
     [Theory]
@@ -26,6 +49,15 @@ public class WhenDesserializingIntegers
     }
 
     public static IEnumerable<object[]> IntegerGenerator()
+    {
+        yield return new object[] { "0".ToWellFormedIntegerCommand() };
+        yield return new object[] { "-1".ToWellFormedIntegerCommand() };
+        yield return new object[] { "12345".ToWellFormedIntegerCommand() };
+        yield return new object[] { "-100000000".ToWellFormedIntegerCommand() };
+        yield return new object[] { "100000000".ToWellFormedIntegerCommand() };
+    }
+
+    public static IEnumerable<object[]> InvalidIntegerGenerator()
     {
         yield return new object[] { "OK".ToWellFormedIntegerCommand() };
         yield return new object[] { "This is a valid string".ToWellFormedIntegerCommand() };

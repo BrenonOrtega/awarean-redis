@@ -2,7 +2,7 @@
 using FluentAssertions;
 using static Awarean.Redis.Domain.Constants;
 
-namespace Awarean.Redis.Domain.UnitTests;
+namespace Awarean.Redis.Domain.Resp2.UnitTests;
 
 public class WhenDesserializingAnyData
 {
