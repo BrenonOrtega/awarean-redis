@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B237B719
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Awarean.Redis.Domain.UnitTests", "tests\Awarean.Redis.Domain.UnitTests\Awarean.Redis.Domain.UnitTests.csproj", "{71B3302C-1BEE-4182-9C2C-3865B5A39BAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Awarean.Redis.Tcp", "src\Awarean.Redis.Tcp\Awarean.Redis.Tcp.csproj", "{A6D2AC44-E761-4DE8-A8C8-AB647846BE16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Awarean.Redis.TcpClient", "src\Awarean.Redis.TcpClient\Awarean.Redis.TcpClient.csproj", "{CF3CC956-EBA5-41D8-B427-7A3332887F6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,9 +32,19 @@ Global
 		{71B3302C-1BEE-4182-9C2C-3865B5A39BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71B3302C-1BEE-4182-9C2C-3865B5A39BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71B3302C-1BEE-4182-9C2C-3865B5A39BAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D2AC44-E761-4DE8-A8C8-AB647846BE16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D2AC44-E761-4DE8-A8C8-AB647846BE16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D2AC44-E761-4DE8-A8C8-AB647846BE16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D2AC44-E761-4DE8-A8C8-AB647846BE16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF3CC956-EBA5-41D8-B427-7A3332887F6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF3CC956-EBA5-41D8-B427-7A3332887F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF3CC956-EBA5-41D8-B427-7A3332887F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF3CC956-EBA5-41D8-B427-7A3332887F6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{223D24FF-2983-45D8-B128-95C88AF43A7A} = {4DB767D6-5A78-49AE-9CC0-DC3B997623BB}
 		{71B3302C-1BEE-4182-9C2C-3865B5A39BAD} = {B237B719-B741-4CEB-A014-8E9648498A11}
+		{A6D2AC44-E761-4DE8-A8C8-AB647846BE16} = {4DB767D6-5A78-49AE-9CC0-DC3B997623BB}
+		{CF3CC956-EBA5-41D8-B427-7A3332887F6F} = {4DB767D6-5A78-49AE-9CC0-DC3B997623BB}
 	EndGlobalSection
 EndGlobal

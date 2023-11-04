@@ -10,5 +10,5 @@ public class WhenDesserializingArrays
 {
     [Fact]
     public void ValidArrayShouldDesserialize()
-        => throw new NotImplementedException();
+         => throw new NotImplementedException();
 }
